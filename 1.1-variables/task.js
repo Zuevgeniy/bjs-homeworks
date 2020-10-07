@@ -13,7 +13,7 @@ function sayHello(myName) {
 
 
 
-	return "Привет, мир! Меня зовут " + (myName)
+	return (`Привет, мир! Меня зовут ${myName}`)
 }
 
 function calculateFormula() {
