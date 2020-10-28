@@ -46,37 +46,25 @@ console.log();
 
 
 function getAverageScore(data) {
-      let allAverage = 0;
-      let objectLength  = 0;
-      for ( let averageMark in data ) {
-        let value = data[ averageMark ];
-        let sumResult = 0;
-        for (let i = 0; i < value.length; i++) {
-          sumResult = sumResult + value[i];
-        }
-        data[ averageMark ] = sumResult / value.length;
-        allAverage = allAverage + data[ averageMark ];
-        objectLength++
-        data.average = allAverage / objectLength;
-      }
-      return data
+	let result = {};
 
-    }
+	for (let subject in data) {
+		result[subject] = getAverageMark(data[subject]);
+	}
 
-    console.log(getAverageScore({
-      algebra: [3,4,5,4,5],
-      music: [3,4,5],
-      chemistry: [3,2,4,5],
-      geometry: [3,4,5,4,5],
-      russian: [3],
-      physics: [3,4,4,5],
-      english: [3,4,5],
-      poetry: [3,4,5,2,5],
-      french: [3,3,4,5],
-      geography: [3,4,5]
+	if (result == {}) result.average = 0;
+	else result.average = getAverageMark(result);
+	return result;
+}
+function getAverageMark(marks) {
+		let total = 0;
+		let i = 0;
 
-    }));
+		for (let mark in marks) {
+			total = total + Number(marks[mark]);
+			i++;
+		}
 
-
-
-console.log();
+		if (i == 0) return 0;
+		return total/i;
+	}
