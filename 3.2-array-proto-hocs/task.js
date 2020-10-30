@@ -10,18 +10,21 @@ function findZero(...args) {
     return Array.from(args).some(arg => arg === 0);
 }
 
+
 function compareArrays(arr1, arr2) {
-     return arr1.every((elem, i) => elem === arr2[i]);
-}
+  return arr1.length === arr2.length && arr1.every((elem, i) => elem === arr2[i]);;
+};
+
 
 function memorize(fn, limit) {
     let memory = [];
     return function(...args) {
         let log = memory.find((object) => compareArrays(object.args, Array.from(arguments)));
-        if (log !== undefined)
+        if (log)
+
             return log.result;
         let res = fn(...args);
-        console.log(res);
+
         if (memory.unshift({args : Array.from(arguments), result: res}) > limit)
             memory.pop();
         return res;
